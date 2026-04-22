@@ -1,0 +1,24 @@
+.chat-massage-user{
+        display:flex;
+        justify-content: end;
+        margin-top: 10px;
+        align-items: start;
+
+      }
+      .chat-massage-robot{
+        display:flex;
+        align-items: start;
+      }
+      .chat-massage-text{
+        background-color: rgb(238,238,238);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        max-width: 300px;
+
+      }
+      .chat-massage-profile{
+        width:45px;
+      }
