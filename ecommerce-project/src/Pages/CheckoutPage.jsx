@@ -158,7 +158,7 @@ export function CheckoutPage({ cart }) {
                 <div className="payment-summary-row subtotal-row">
                   <div>Total before tax:</div>
                   <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.totelCostBeforeTaxCents)}
+                    {formatMoney(paymentSummary.totalCostBeforeTaxCents)}
                   </div>
                 </div>
 
@@ -172,7 +172,7 @@ export function CheckoutPage({ cart }) {
                 <div className="payment-summary-row total-row">
                   <div>Order total:</div>
                   <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.totelCostCents)}
+                    {formatMoney(paymentSummary.totalCostCents)}
                   </div>
                 </div>
 
