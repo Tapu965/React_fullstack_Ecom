@@ -1,23 +1,31 @@
+import axios from "axios";
 import { useState } from "react";
 import { formatMoney } from "../../utils/money";
-import axios from "axios";
-export function Product(product, loadCart) {
-    const [quantity, setQuantity]= useState(1);
-    const addtoCArt = async () => {
-          await axios.post("/api/cart-items", {
-            productId: product.id,
-            quantity
-          });
-          await loadCart();
-        };
-        const selectQuantity =(event) => {
-            const quantitySelected = Number(event.target.value);
-            setQuantity(quantitySelected);
-          };
+
+export function Product({ product, loadCart }) {
+  const [quantity, setQuantity] = useState(1);
+
+  const addToCart = async () => {
+    await axios.post("/api/cart-items", {
+      productId: product.id,
+      quantity,
+    });
+    await loadCart();
+  };
+
+  const selectQuantity = (event) => {
+    const quantitySelected = Number(event.target.value);
+    setQuantity(quantitySelected);
+  };
+
   return (
-    <div className="product-container">
+    <div className="product-container" data-testid="product-container">
       <div className="product-image-container">
-        <img className="product-image" src={product.image} />
+        <img
+          className="product-image"
+          data-testid="product-image"
+          src={product.image}
+        />
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
@@ -25,6 +33,7 @@ export function Product(product, loadCart) {
       <div className="product-rating-container">
         <img
           className="product-rating-stars"
+          data-testid="product-rating-stars-image"
           src={`images/ratings/rating-${product.rating.stars * 10}.png`}
         />
         <div className="product-rating-count link-primary">
@@ -35,10 +44,7 @@ export function Product(product, loadCart) {
       <div className="product-price">{formatMoney(product.priceCents)}</div>
 
       <div className="product-quantity-container">
-        <select
-          value={quantity}
-          onChange={selectQuantity}
-        >
+        <select value={quantity} onChange={selectQuantity}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -61,7 +67,9 @@ export function Product(product, loadCart) {
 
       <button
         className="add-to-cart-button button-primary"
-        onClick={addtoCArt}>
+        data-testid="add-to-cart-button"
+        onClick={addToCart}
+      >
         Add to Cart
       </button>
     </div>
